@@ -1,0 +1,431 @@
+root@c6d62762b0c6:/home/workspace/ImageClassifier# python train.py data_dir=/home/workspace/ImageClassifier/flowers --arch resnet18 --save_dir /home/workspace/ImageClassifier --epochs 10 --learning_rate 0.0001 --dropout_p 0.5 --hidden_units 512 256 --gpu
+Get CLI arguments ...
+Load data ...
+Load mapping of categories to label names ...
+Create model ...
+Downloading: "https://download.pytorch.org/models/resnet18-5c106cde.pth" to /root/.torch/models/resnet18-5c106cde.pth
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 46827520/46827520 [00:00<00:00, 100022944.37it/s]
+Define device ...
+Model:
+ResNet(
+  (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AvgPool2d(kernel_size=7, stride=1, padding=0)
+  (fc): Sequential(
+    (fc1): Linear(in_features=512, out_features=512, bias=True)
+    (relu1): ReLU()
+    (dropout1): Dropout(p=0.5)
+    (fc2): Linear(in_features=512, out_features=256, bias=True)
+    (relu2): ReLU()
+    (dropout2): Dropout(p=0.5)
+    (fc3): Linear(in_features=256, out_features=102, bias=True)
+    (out_log_softmax): LogSoftmax()
+  )
+)
+Model parameters:
+data_dir: /data/flowers
+save_dir: /home/workspace/ImageClassifier
+arch: resnet18
+learning_rate: 0.0001
+epochs: 10
+hidden_units: [512, 256]
+gpu: True
+batch_size: 32
+dropout_p: 0.5
+category_names: cat_to_name.json
+train_datasets_class_to_idx: {'1': 0, '10': 1, '100': 2, '101': 3, '102': 4, '11': 5, '12': 6, '13': 7, '14': 8, '15': 9, '16': 10, '17': 11, '18': 12, '19': 13, '2': 14, '20': 15, '21': 16, '22': 17, '23': 18, '24': 19, '25': 20, '26': 21, '27': 22, '28': 23, '29': 24, '3': 25, '30': 26, '31': 27, '32': 28, '33': 29, '34': 30, '35': 31, '36': 32, '37': 33, '38': 34, '39': 35, '4': 36, '40': 37, '41': 38, '42': 39, '43': 40, '44': 41, '45': 42, '46': 43, '47': 44, '48': 45, '49': 46, '5': 47, '50': 48, '51': 49, '52': 50, '53': 51, '54': 52, '55': 53, '56': 54, '57': 55, '58': 56, '59': 57, '6': 58, '60': 59, '61': 60, '62': 61, '63': 62, '64': 63, '65': 64, '66': 65, '67': 66, '68': 67, '69': 68, '7': 69, '70': 70, '71': 71, '72': 72, '73': 73, '74': 74, '75': 75, '76': 76, '77': 77, '78': 78, '79': 79, '8': 80, '80': 81, '81': 82, '82': 83, '83': 84, '84': 85, '85': 86, '86': 87, '87': 88, '88': 89, '89': 90, '9': 91, '90': 92, '91': 93, '92': 94, '93': 95, '94': 96, '95': 97, '96': 98, '97': 99, '98': 100, '99': 101}
+no_records_train: 6552
+no_records_valid: 818
+no_records_test: 819
+output_size: 102
+output_function: LogSoftmax
+loss_function: NLLLoss
+optimizer: Adam
+train_loss_accuracy_batch_interval: 51
+'state_dict' key does not exist
+Start training inclusive validation ...
+***************************
+Epoch 1/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 4.607907744014964
+Validation loss: 4.5641914330996
+Validation accuracy: 0.039663461538461536
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 4.567510497336294
+Validation loss: 4.453383610798762
+Validation accuracy: 0.052884615384615384
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 4.512754190980998
+Validation loss: 4.302890474979694
+Validation accuracy: 0.09254807692307693
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 4.452336757790809
+Validation loss: 4.092654925126296
+Validation accuracy: 0.14543269230769232
+***************************
+Epoch 2/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 4.260852378957412
+Validation loss: 3.995148915510911
+Validation accuracy: 0.16466346153846154
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 4.1025597231060855
+Validation loss: 3.738030039347135
+Validation accuracy: 0.21033653846153846
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 3.9631550483454285
+Validation loss: 3.485369929900536
+Validation accuracy: 0.2512019230769231
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 3.8375241896685433
+Validation loss: 3.18444496851701
+Validation accuracy: 0.31850961538461536
+***************************
+Epoch 3/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 3.6415936806622673
+Validation loss: 3.1050814115084133
+Validation accuracy: 0.3098290598449799
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 3.3421760563756906
+Validation loss: 2.7882296167887173
+Validation accuracy: 0.36778846153846156
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 3.194193093605291
+Validation loss: 2.5453326610418467
+Validation accuracy: 0.44150641044745076
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 3.0531144329145845
+Validation loss: 2.3287020921707153
+Validation accuracy: 0.4845085470722272
+***************************
+Epoch 4/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 3.2845009541979024
+Validation loss: 2.4518251419067383
+Validation accuracy: 0.46434294890898925
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 2.85017735116622
+Validation loss: 2.0977947895343485
+Validation accuracy: 0.5217681624568425
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 2.6423511614207347
+Validation loss: 1.9299176931381226
+Validation accuracy: 0.5681089747410554
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 2.502455853364047
+Validation loss: 1.773041158914566
+Validation accuracy: 0.6201923076923077
+***************************
+Epoch 5/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 3.018384512733011
+Validation loss: 2.0423329059894266
+Validation accuracy: 0.5659722227316636
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 2.5277960300445557
+Validation loss: 1.6568293456847851
+Validation accuracy: 0.6294070516641324
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 2.2943621203790303
+Validation loss: 1.5244440069565406
+Validation accuracy: 0.6692040608479426
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 2.146049413610907
+Validation loss: 1.4215145798829885
+Validation accuracy: 0.6979166659025046
+***************************
+Epoch 6/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 2.8187335004993512
+Validation loss: 1.6517706765578344
+Validation accuracy: 0.6617254270957067
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 2.3030423790800807
+Validation loss: 1.3439479974599986
+Validation accuracy: 0.7138087611932021
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 2.05578865256964
+Validation loss: 1.2290664682021508
+Validation accuracy: 0.7210202996547406
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 1.9079607088191837
+Validation loss: 1.1741692435282927
+Validation accuracy: 0.7419871802513416
+***************************
+Epoch 7/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 2.657925764719645
+Validation loss: 1.473000542475627
+Validation accuracy: 0.6945779919624329
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 2.101711096716862
+Validation loss: 1.1643238503199358
+Validation accuracy: 0.7486645304239713
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 1.860289031384038
+Validation loss: 1.0566950325782483
+Validation accuracy: 0.7727029919624329
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 1.727268194158872
+Validation loss: 1.0036807335340059
+Validation accuracy: 0.7748397428255814
+***************************
+Epoch 8/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 2.5631068290448655
+Validation loss: 1.2911120286354651
+Validation accuracy: 0.7330395304239713
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 1.988604893871382
+Validation loss: 1.0510424100435698
+Validation accuracy: 0.7534722227316636
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 1.731846051278457
+Validation loss: 0.94606758080996
+Validation accuracy: 0.7955395304239713
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 1.6043061389058244
+Validation loss: 0.8788024806059324
+Validation accuracy: 0.8108974351332738
+***************************
+Epoch 9/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 2.4011676989349664
+Validation loss: 1.1643852694676473
+Validation accuracy: 0.7570779919624329
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 1.841905310457828
+Validation loss: 0.9268011290293473
+Validation accuracy: 0.7919337611932021
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 1.6124260261947034
+Validation loss: 0.8395192915430436
+Validation accuracy: 0.8159722227316636
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 1.482313189144228
+Validation loss: 0.8066055264610511
+Validation accuracy: 0.8159722227316636
+***************************
+Epoch 10/10
+----
+Processed 51 training batches with 1632 processed images
+Training loss: 2.376467641662149
+Validation loss: 1.0654256297991826
+Validation accuracy: 0.767628204364043
+----
+Processed 102 training batches with 3264 processed images
+Training loss: 1.8017897798734552
+Validation loss: 0.8537803338124201
+Validation accuracy: 0.8205128197486584
+----
+Processed 153 training batches with 4896 processed images
+Training loss: 1.5673526509914524
+Validation loss: 0.7738115002329533
+Validation accuracy: 0.82892628128712
+----
+Processed 204 training batches with 6528 processed images
+Training loss: 1.4327673432873744
+Validation loss: 0.7317494744291673
+Validation accuracy: 0.8277243582101969
+Start testing the model ...
+----
+Batch 1/26 - Loss: 0.8828471899032593
+Batch 1/26 - Accuracy: 0.6875
+----
+Batch 2/26 - Loss: 0.9388424158096313
+Batch 2/26 - Accuracy: 0.84375
+----
+Batch 3/26 - Loss: 0.8356083631515503
+Batch 3/26 - Accuracy: 0.71875
+----
+Batch 4/26 - Loss: 0.5330638885498047
+Batch 4/26 - Accuracy: 0.84375
+----
+Batch 5/26 - Loss: 0.9667945504188538
+Batch 5/26 - Accuracy: 0.78125
+----
+Batch 6/26 - Loss: 0.9944649338722229
+Batch 6/26 - Accuracy: 0.71875
+----
+Batch 7/26 - Loss: 1.5262523889541626
+Batch 7/26 - Accuracy: 0.59375
+----
+Batch 8/26 - Loss: 1.0846267938613892
+Batch 8/26 - Accuracy: 0.75
+----
+Batch 9/26 - Loss: 0.3242488503456116
+Batch 9/26 - Accuracy: 0.96875
+----
+Batch 10/26 - Loss: 0.46600618958473206
+Batch 10/26 - Accuracy: 0.875
+----
+Batch 11/26 - Loss: 1.007819414138794
+Batch 11/26 - Accuracy: 0.6875
+----
+Batch 12/26 - Loss: 0.8013283610343933
+Batch 12/26 - Accuracy: 0.8125
+----
+Batch 13/26 - Loss: 0.44379156827926636
+Batch 13/26 - Accuracy: 0.90625
+----
+Batch 14/26 - Loss: 0.37718430161476135
+Batch 14/26 - Accuracy: 0.9375
+----
+Batch 15/26 - Loss: 0.8983299732208252
+Batch 15/26 - Accuracy: 0.71875
+----
+Batch 16/26 - Loss: 1.0068747997283936
+Batch 16/26 - Accuracy: 0.78125
+----
+Batch 17/26 - Loss: 0.45889928936958313
+Batch 17/26 - Accuracy: 0.90625
+----
+Batch 18/26 - Loss: 0.20091205835342407
+Batch 18/26 - Accuracy: 0.9375
+----
+Batch 19/26 - Loss: 0.29413777589797974
+Batch 19/26 - Accuracy: 0.875
+----
+Batch 20/26 - Loss: 0.5413228273391724
+Batch 20/26 - Accuracy: 0.875
+----
+Batch 21/26 - Loss: 1.0800529718399048
+Batch 21/26 - Accuracy: 0.75
+----
+Batch 22/26 - Loss: 1.2266812324523926
+Batch 22/26 - Accuracy: 0.6875
+----
+Batch 23/26 - Loss: 0.9936296343803406
+Batch 23/26 - Accuracy: 0.75
+----
+Batch 24/26 - Loss: 0.9609121084213257
+Batch 24/26 - Accuracy: 0.84375
+----
+Batch 25/26 - Loss: 0.8665278553962708
+Batch 25/26 - Accuracy: 0.84375
+----
+Batch 26/26 - Loss: 1.311249017715454
+Batch 26/26 - Accuracy: 0.6315789222717285
+----
+Total processed batches: 26
+Total processed images: 819
+Average loss: 0.8085541828320577
+Average accuracy: 0.7971280354719895
+Save the model and parameters to checkpoint ...
+Checkpoint saved to /home/workspace/ImageClassifier/20210315-092209_resnet18_checkpoint.pth
+Elapsed time (1154s): 0d 0h 19m 14s
