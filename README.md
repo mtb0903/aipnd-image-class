@@ -6,8 +6,6 @@ The project consists of a **Jupyter Notebook** and a **CLI application** that ca
 
 ## CLI Examples
 
-# Examples trainings
-
 ### vgg16
 ```
 python train.py data_dir=/home/workspace/ImageClassifier/flowers --arch vgg16 --save_dir /home/workspace/ImageClassifier --epochs 15 --learning_rate 0.0001 --dropout_p 0.5 --hidden_units 4096 2048 1024 512 --gpu 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_training_vgg16.txt
