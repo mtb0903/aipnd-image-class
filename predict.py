@@ -205,19 +205,41 @@ def process_image(pil_im):
     :param pil_im:
     :return ndarray:
     """
-    size = (256, 256)
+    # Target sizes
+    new_min_max_width_or_height = 256
     crop_len = 224
 
-    # Resize the image to 256x256
-    pil_im = pil_im.resize((size))
+    # Current image size
+    width, height = pil_im.size
+
+    # Calculate the ratio based on new width and current width
+    ratio = new_min_max_width_or_height / width
+
+    # Calculate the new height based on new_width/width ratio
+    new_height = int(height * ratio)
+
+    # If new_height is less than expected new height, then calculate ratio based new height instead of new width
+    if new_height < new_min_max_width_or_height:
+        ratio = new_min_max_width_or_height / height
+        new_width = int(width * ratio)
+        new_height = new_min_max_width_or_height
+    else:
+        new_width = new_min_max_width_or_height
+
+    # Resize the image to new_width and new_height
+    new_size = (new_width, new_height)
+    pil_im = pil_im.resize(new_size)
+
+    # Input dimensions when plotting pil_image will look like:
+    # Left, Top = 0, 0
+    # Right, Bottom = 256 or greater, 256 or greater
 
     # Crop the center 224x224 portion of the image
-    # Left, Top = 0, 0
-    # Right, Bottom = 256, 256
     left = (pil_im.width - crop_len) / 2
     top = (pil_im.height - crop_len) / 2
     right = left + crop_len
     bottom = top + crop_len
+
     pil_im = pil_im.crop((left, top, right, bottom))
 
     # Convert from PIL image to numpy array and change channel encoding from 0-255 to floats from 0-1
