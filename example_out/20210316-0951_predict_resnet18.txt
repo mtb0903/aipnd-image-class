@@ -1,0 +1,20 @@
+Downloading: "https://download.pytorch.org/models/resnet18-5c106cde.pth" to /root/.torch/models/resnet18-5c106cde.pth
+  0%|          | 0/46827520 [00:00<?, ?it/s]  8%|▊         | 3891200/46827520 [00:00<00:01, 38880056.52it/s] 29%|██▊       | 13410304/46827520 [00:00<00:00, 47236114.17it/s] 43%|████▎     | 20357120/46827520 [00:00<00:00, 52248803.66it/s] 54%|█████▍    | 25460736/46827520 [00:00<00:00, 51245724.27it/s] 67%|██████▋   | 31457280/46827520 [00:00<00:00, 53564236.58it/s] 78%|███████▊  | 36601856/46827520 [00:00<00:00, 52856178.07it/s] 91%|█████████▏| 42827776/46827520 [00:00<00:00, 55073132.04it/s]100%|██████████| 46827520/46827520 [00:00<00:00, 60249149.82it/s]
+Get CLI arguments ...
+Define device ...
+WARN: GPU requested, but is not available. Use CPU instead.
+Load the model and parameters from checkpoint ...
+Get image path and labels ...
+... for a single image file
+Load category names ...
+Let's predict ...
+
+Image #1: /data/flowers/test/1/image_06743.jpg
+Expected category: Unknown
+Top 5 prediction(s):
+73.43962%  pink primrose
+9.04546%   petunia
+6.85646%   hibiscus
+5.00593%   tree poppy
+4.33091%   tree mallow
+Elapsed time (1s): 0d 0h 0m 1s

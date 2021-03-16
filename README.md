@@ -12,9 +12,9 @@ python train.py data_dir=/home/workspace/ImageClassifier/flowers --arch vgg16 --
 ```
 [Training output](example_out/20210313-125121_training_vgg16.txt)
 ```
-python predict.py flowers/test/1/image_06743.jpg 20210313-125121_vgg16_checkpoint.pth -g 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_predict_vgg16.txt
+python predict.py 20210313-125121_vgg16_checkpoint.pth -f flowers/test/1/image_06743.jpg -g 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_predict_vgg16.txt
 ```
-[Predication output](example_out/20210315-1113_predict_vgg16.txt)
+[Predication output](example_out/20210316-0951_predict_vgg16.txt)
 
 ### resnet18
 ```
@@ -22,9 +22,9 @@ python train.py data_dir=/home/workspace/ImageClassifier/flowers --arch resnet18
 ```
 [Training output](example_out/20210315-092209_training_resnet18.txt)
 ```
-python predict.py flowers/test/1/image_06743.jpg 20210315-092209_resnet18_checkpoint.pth -g 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_predict_resnet18.txt
+python predict.py 20210315-092209_resnet18_checkpoint.pth -f flowers/test/1/image_06743.jpg -g 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_predict_resnet18.txt
 ```
-[Predication output](example_out/20210315-1113_predict_resnet18.txt)
+[Predication output](example_out/20210316-0951_predict_resnet18.txt)
 
 ### densenet161
 ```
@@ -32,9 +32,9 @@ python train.py data_dir=/home/workspace/ImageClassifier/flowers --arch densenet
 ```
 [Training output](example_out/20210315-101225_training_densenet161.txt)
 ```
-python predict.py flowers/test/1/image_06743.jpg 20210315-101225_densenet161_checkpoint.pth -g 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_predict_densenet161.txt
+python predict.py 20210315-101225_densenet161_checkpoint.pth -f flowers/test/1/image_06743.jpg -g 2>&1 | tee -a  $(date '+%Y%m%d-%H%M')_predict_densenet161.txt
 ```
-[Predication output](example_out/20210315-1014_predict_densenet161.txt)
+[Predication output](example_out/20210316-0952_predict_densenet161.txt)
 
 ## Dependencies
 

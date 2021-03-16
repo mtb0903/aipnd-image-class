@@ -24,12 +24,12 @@ def get_args():
     default_root_dir = Path(__file__).parent
 
     parser = argparse.ArgumentParser(description='Predict image classification based on existing pretrained model')
-    parser.add_argument('image_file', type=lambda p: train.path_exists(p, replace_keyword="image_file=", is_file=True),
-                        metavar='<path to image file>', nargs='?', help='path to image file')
     parser.add_argument('checkpoint', type=lambda p: train.path_exists(p, replace_keyword="checkpoint=", is_file=True),
                         metavar='<path to checkpoint file>', nargs='?',
                         help='file path to torch checkpoint of the existing pretrained model')
-    group = parser.add_mutually_exclusive_group()
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-f', '--image_file', type=lambda p: train.path_exists(p, is_file=True),
+                       metavar='<path to image file>', nargs='?', help='use path to image file')
     group.add_argument('-i', '--image_dir', type=lambda p: train.path_exists(p), metavar='<path to images dir>',
                        nargs='?', help='use directory containing image files; can be used as alternative to specifying'
                                        ' just a single image file path')
