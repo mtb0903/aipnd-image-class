@@ -110,11 +110,12 @@ def get_class_label_names(class_idx_predictions, class_to_idx, class_to_label):
     # Flatten to 1D tensor and convert to ndarray
     class_idx_predictions = np.array(np.squeeze(class_idx_predictions))
 
-    # top_k represents an class index provided by model prediction
-    # Get the label from the class that matches the top k index
-    class_labels_predictions = [class_to_label.get(cls, k)
-                          for k in class_idx_predictions
-                          for cls, idx in class_to_idx.items() if k == idx]
+    # Switch key to value and value to key
+    idx_to_class = {idx: cls for cls, idx in class_to_idx.items()}
+
+    # class_idx_predictions represents an class index, e.g. provided by model prediction
+    # Get the label from the class that matches the index
+    class_labels_predictions = [class_to_label.get(idx_to_class.get(idx, None), idx) for idx in class_idx_predictions]
 
     # Return list
     return class_labels_predictions
